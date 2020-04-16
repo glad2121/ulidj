@@ -214,4 +214,13 @@ public class ULIDTest {
 			}
 		}
 	}
+
+	@Test
+	public void testAzamGetAndGenerate() {
+		String text = "0123456789ABCDEFGHJKMNPQRS";
+		long timestamp = ULID.getTimestamp(text);
+		byte[] entropy = ULID.getEntropy(text);
+		Assert.assertEquals(ULID.generate(timestamp, entropy), text);
+	}
+
 }
